@@ -31,6 +31,7 @@ class Database extends Config
      * @var array
      */
     public $default = [
+        
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
