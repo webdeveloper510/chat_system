@@ -15,7 +15,7 @@ public function __construct()
 }
 
     protected $DBGroup              = 'default';
-    protected $table                = '';
+    protected $table                = 'profile';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
@@ -52,9 +52,14 @@ public function __construct()
     public function insert_data($data)
 {
      
-    $this->db->table($this->table)->insert($data);
-    return $this->db->insertID();
+    $record = $this->db->table($this->table)->insert($data);
+    return $record;
 
+    }
+
+    function update_records($data){
+        $table->where('id', 1);
+        $table->update($data);
     }
 
 
