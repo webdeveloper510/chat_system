@@ -29825,3 +29825,9 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 h5.card-title.text-muted.mb-0 {
     font-size: 12px;
 }
+.float-right{
+    float:right;
+}
+.body-content {
+    background: #bdbcbc;
+}
