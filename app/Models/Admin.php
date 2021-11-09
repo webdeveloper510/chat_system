@@ -52,10 +52,21 @@ public function __construct()
     public function insert_data($data)
 {
      
-    $this->db->table($this->table)->insert($data);
-    return $this->db->insertID();
+    $record = $this->db->table($this->table)->insert($data);
+    return $record;
 
     }
+
+    function update_records($data){
+        $table->where('id', 1);
+        $table->update($data);
+    }
+
+    function insert_coin($coin){
+        $coin_res = $this->db->table($table)->insert($coin)->where('coin',$coin);
+        return $coin_res;
+    }
+
 
 }
     
