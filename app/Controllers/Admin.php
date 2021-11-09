@@ -6,6 +6,19 @@ use App\Controllers\BaseController;
 
 class Admin extends BaseController
 {
+
+    public function __construct()
+    {
+        // parent::__construct(); // BaseController has no Constructor
+
+        $model = new Admin(); // I am guessing this is in your App\Controllers Folder.
+
+        // Assign the model result to the badly named Class Property
+        $this->findAll = [
+            'shop' => $model->table('shop')->where('brand_name_slug', 'hugo-boss')->findAll()
+        ];
+    }
+
     public function index()
     {
         echo "hello";
@@ -51,7 +64,7 @@ class Admin extends BaseController
                     'country'    => 'india',
                     'postarea'    => 'baijnath',
                     'city'    => 'mandi',
-                    'coins'    => '200',
+                    'coins'    => 0,
                     'status'    => 'live',
                     'profiletext'    => '',        
                     'name'    => 'Rahul verma', 
@@ -61,19 +74,14 @@ class Admin extends BaseController
                     'hobbies'    => '', 
                         ];
 
-    
-                if ($this->detail) {
-
-                    $insert_data = new \App\Models\Admin();
-                    $insert_data->insert($detail);
-                    $session->setFlashdata('msg', 'Record Inserted successfully');
-
+                    $res = $model ->insert_data($detail);
+                    if ($res){
+                        $session->setFlashdata('msg', 'Record Inserted successfully');
+                        return view('');
+                    }else{
+                        $session->setFlashdata('error', 'something went wrong');
                     }
-                    else
-                    {
-                        echo "something went wrong";
-                        return view('register');    
-                    }           
+
                     
                 } 
             
@@ -99,10 +107,30 @@ class Admin extends BaseController
                     'family'=> $this->input->post('family'),
                     'hobbies'=> $this->input->post('hobbies'),
                     );
-                    $this->Admin->update_records($data);
-                    $session->setFlashdata('msg', 'Record Inserted successfully');
+        
+                    $res = $model ->update_records($data);
+                    
+                    if($res){
+                        $session->setFlashdata('msg', 'Record Inserted successfully');
+                        return view('');
+                    }else{
+                        $session->setFlashdata('error', 'something went wrong');
+                    }
 
 
+                }
+
+                function Add_Manually_Coin(){
+                    
+                    $coin = $this->input->post('coin');
+                    $res = $model ->insert_coin($data);
+                    if ($res){
+                        $session->setFlashdata('msg', 'Coin Inserted successfully');
+                        return view('');
+                    }else{
+                        $session->setFlashdata('error', 'something went wrong');
+                    }
+                    
                 }
         }
 

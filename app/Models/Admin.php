@@ -62,6 +62,11 @@ public function __construct()
         $table->update($data);
     }
 
+    function insert_coin($coin){
+        $coin_res = $this->db->table($table)->insert($coin)->where('coin',$coin);
+        return $coin_res;
+    }
+
 
 }
     
