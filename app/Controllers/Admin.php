@@ -9,9 +9,9 @@ class Admin extends BaseController
 
     public function __construct()
     {
-        // parent::__construct(); // BaseController has no Constructor
+        parent::__construct(); 
 
-        $model = new Admin(); // I am guessing this is in your App\Controllers Folder.    
+        $model = new Admin();    
     }
 
     public function index()
