@@ -15,7 +15,7 @@ public function __construct()
 }
 
     protected $DBGroup              = 'default';
-    protected $table                = 'profile';
+    protected $table                = '';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
@@ -56,6 +56,7 @@ public function __construct()
     return $this->db->insertID();
 
     }
+
 
 }
     
