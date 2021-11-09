@@ -49,6 +49,14 @@ public function __construct()
     protected $afterDelete          = [];
 
 
+    function insert_users_data($data){
+        $insert_data = $this->db->table($this->table)->insert($data);
+        return $insert_data;
+        
+    }
+
+
+
     public function insert_data($data)
 {
      
@@ -67,6 +75,12 @@ public function __construct()
         return $coin_res;
     }
 
+    function fetch_role_id(){
+        $builder = $db->table('role');
+        $query   = $builder->get();  // Produces: SELECT * FROM mytable
+        return $query;
+        
+    }    
 
 }
     
