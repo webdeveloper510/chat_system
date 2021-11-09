@@ -11,12 +11,7 @@ class Admin extends BaseController
     {
         // parent::__construct(); // BaseController has no Constructor
 
-        $model = new Admin(); // I am guessing this is in your App\Controllers Folder.
-
-        // Assign the model result to the badly named Class Property
-        $this->findAll = [
-            'shop' => $model->table('shop')->where('brand_name_slug', 'hugo-boss')->findAll()
-        ];
+        $model = new Admin(); // I am guessing this is in your App\Controllers Folder.    
     }
 
     public function index()
