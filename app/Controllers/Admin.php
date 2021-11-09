@@ -32,8 +32,7 @@ class Admin extends BaseController
 
             $db =\config\Database::connect(); 
             $data= $db->table('profile');
-            $data->insert($user_data);    
-            
+            $data->insert($user_data);              
         
     }
 
