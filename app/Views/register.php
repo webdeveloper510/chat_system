@@ -9,14 +9,14 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="./app/assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
 
 <body class="bg-default">
@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="dashboard.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="./assets/img/brand/blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -147,6 +147,19 @@
                     <input class="form-control" placeholder="Password" type="password">
                   </div>
                 </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-role-83"></i></span>
+                    </div>
+                    <select class="form-select form-control" aria-label="Default select example">
+                      <option selected>Role</option>
+                      <option value="1">Admin</option>
+                      <option value="2">Operator</option>
+                      <option value="3">Customer</option>
+                    </select>
+                    </div>
+                </div>
                 <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
                 <div class="row my-4">
                   <div class="col-12">
@@ -198,13 +211,13 @@
   </footer>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="./app/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./app/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./app/assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="./app/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="./app/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="./app/assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>
