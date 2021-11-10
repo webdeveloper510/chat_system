@@ -7,11 +7,13 @@ use App\Controllers\BaseController;
 class Admin extends BaseController
 {
 
+    public $model;
+
     public function __construct()
     {
         //parent::__construct(); 
 
-        $model = new Admin();    
+      // $this->model= new Admin();  
     }
 
     public function index()
