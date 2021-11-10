@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Admin extends Model
 {
-    private $db;
+    protected $db;
 
 public function __construct()
 {
@@ -50,7 +50,8 @@ public function __construct()
 
 
     function insert_users_data($data){
-        $insert_data = $this->db->table($this->table)->insert($data);
+        $builder = $db->table('users');
+        $insert_data = $this->db->table($builder)->insert($data);
         return $insert_data;
         
     }

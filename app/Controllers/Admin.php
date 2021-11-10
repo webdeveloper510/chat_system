@@ -11,9 +11,10 @@ class Admin extends BaseController
 
     public function __construct()
     {
+        
         //parent::__construct(); 
 
-      // $this->model= new Admin();  
+       $this->model= new \App\Models\Admin;  
     }
 
     public function index()
@@ -45,9 +46,15 @@ class Admin extends BaseController
         
     // }
 
+
+    public function register_profile(){
+
+        return view('register');
+    }
+
     public function users_profile(){
 
-            $res= $model->fetch_role_id();
+            $res= $this->model->fetch_role_id();
             $user_role_id =$res['id'];
              
             $data = [
@@ -61,7 +68,7 @@ class Admin extends BaseController
 
                  ];
 
-                 $user_data = $model ->insert_users_data($data);
+                 $user_data = $this->model ->insert_users_data($data);
                     if ($user_data){
                         $session->setFlashdata('msg', 'Record Inserted successfully');
                         return view('');
@@ -99,7 +106,7 @@ class Admin extends BaseController
                     'hobbies'    =>$this->input->post('hobbies'),
                         ];
 
-                    $res = $model ->insert_data($detail);
+                    $res = $this->model ->insert_data($detail);
                     if ($res){
                         $session->setFlashdata('msg', 'Record Inserted successfully');
                         return view('');
@@ -132,7 +139,7 @@ class Admin extends BaseController
                     'hobbies'=> $this->input->post('hobbies'),
                     );
         
-                    $res = $model ->update_records($data);
+                    $res = $this->model ->update_records($data);
                     
                     if($res){
                         $session->setFlashdata('msg', 'Record Inserted successfully');
@@ -147,7 +154,7 @@ class Admin extends BaseController
                 function Add_Manually_Coin(){
                     
                     $coin = $this->input->post('coin');
-                    $res = $model ->insert_coin($data);
+                    $res = $this->model ->insert_coin($data);
                     if ($res){
                         $session->setFlashdata('msg', 'Coin Inserted successfully');
                         return view('');

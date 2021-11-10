@@ -35,6 +35,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Admin::index');
 $routes->post('/user', 'Admin::insert');
 $routes->get('/profile', 'Admin::create_profile');
+$routes->get('/register', 'Admin::register_profile');
+
 
 
 
