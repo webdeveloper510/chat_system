@@ -18,7 +18,7 @@ class Admin extends BaseController
 
     public function index()
     {
-        echo "hello";
+        echo "welcome to chat system project";
     }
 
     // public function insert()
