@@ -47,12 +47,34 @@ class Admin extends BaseController
     // }
 
 
-    public function register_profile(){
+     function register_profile(){
 
         return view('register');
     }
 
-    public function users_profile(){
+
+    function dashboard(){
+    
+        return view('dashboard');
+
+    }
+
+    function Login(){
+    
+        return view('Login');
+
+    }
+
+    function operator(){
+    
+        return view('operator');
+
+    }
+   
+
+
+
+     function users_profile(){
 
             $res= $this->model->fetch_role_id();
             $user_role_id =$res['id'];
@@ -82,7 +104,7 @@ class Admin extends BaseController
 
 
 
-    public function create_profile()
+     function create_profile()
     {       
             $data = [];
 
@@ -120,7 +142,7 @@ class Admin extends BaseController
                 return redirect()->to(base_url('register'));
             }
 
-                public function Profile_Update_Data(){
+                 function Profile_Update_Data(){
 
                     $data = array(
                     'username'=> $this->input->post('username'),                    
