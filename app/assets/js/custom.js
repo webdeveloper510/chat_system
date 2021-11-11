@@ -27,7 +27,7 @@ $('.user_login').submit(function (event) {
         url: "http://localhost:8080/chat_system/Admin/login_user",
         data: $(this).serialize(),
         success: function (responseData,) {
-            console.log(responseData); return false;
+            console.log(responseData);
             if (responseData == 1) {
                 console.log(responseData); 
             setTimeout(function(){

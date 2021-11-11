@@ -103,9 +103,12 @@ public function __construct()
 
 
     function user_login(){
+        // $password = $data['password'];
+        $db = \Config\Database::connect();
         $builder = $db->table('users');
-        $query   = $builder->get(); 
-        return $query;       
+        $query = $this->db->table('users')->get();
+        $data =  $query->getResult();    
+        return $data;
     }   
 } 
 
