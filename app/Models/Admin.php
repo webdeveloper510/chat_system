@@ -4,14 +4,23 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+
 class Admin extends Model
 {
+    
+    protected $output;
     protected $db;
+    protected $session;
+    public $model;
+    
+    
 
 public function __construct()
 {
     parent::__construct();
-    $this->db = \Config\Database::connect();
+    $db = \Config\Database::connect();
+     
+    
 }
 
     protected $DBGroup              = 'default';
@@ -78,12 +87,29 @@ public function __construct()
 
     function fetch_role_id(){
         $builder = $db->table('role');
-        $query   = $builder->get();  // Produces: SELECT * FROM mytable
+        $query   = $builder->get();  
         return $query;
         
     }    
 
-}
+    function insert_create_user($data){
+        // $builder = $table('users');
+        $data['created_at']=date('m/d/y');
+        $data['updated_at']=date('m/d/y');
+           
+        $record = $this->db->table('users')->insert($data);
+        return $record;
+    }
+
+
+    function user_login(){
+        $builder = $db->table('users');
+        $query   = $builder->get(); 
+        return $query;       
+    }   
+} 
+
+
     
 
 
