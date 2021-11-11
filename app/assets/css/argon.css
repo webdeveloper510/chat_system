@@ -29831,6 +29831,10 @@ h5.card-title.text-muted.mb-0 {
 .body-content {
     background: #bdbcbc;
 }
+<<<<<<< HEAD
+.text-right {
+    text-align: right;
+=======
 input.parsley-success,
 select.parsley-success,
 textarea.parsley-success {
@@ -29867,4 +29871,5 @@ textarea.parsley-error {
 
 .parsley-type, .parsley-required, .parsley-equalto{
  color:#ff0000;
+>>>>>>> 7f2030a64f2b42298b890fb2727ebd8d9f986d0e
 }
