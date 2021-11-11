@@ -29831,3 +29831,6 @@ h5.card-title.text-muted.mb-0 {
 .body-content {
     background: #bdbcbc;
 }
+.text-right {
+    text-align: right;
+}
