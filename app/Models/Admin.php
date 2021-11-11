@@ -102,13 +102,15 @@ public function __construct()
     }
 
 
-    function user_login(){
-        // $password = $data['password'];
+    function user_login($data){
+        
         $db = \Config\Database::connect();
-        $builder = $db->table('users');
-        $query = $this->db->table('users')->get();
-        $data =  $query->getResult();    
-        return $data;
+        $query   = $db->table('users');
+        $email = $data['email'];
+        $password = $data['password'];
+        $query = $this->db->table('users')->where('email',$email,'password',$password)->get();
+        $results = $query->getResult();
+        return $results;
     }   
 } 
 

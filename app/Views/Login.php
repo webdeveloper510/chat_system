@@ -103,9 +103,12 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary border-0 mb-0">
-          
+
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
+              <div style="display:none;" class="alert alert-success" id="msg" role="alert">
+          A simple danger alert—check it out!
+        </div>
                 <small> Log in </small>
               </div>
 

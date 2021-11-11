@@ -39,7 +39,9 @@ $routes->get('/profile', 'Admin::user_profile');
 $routes->get('/register', 'Admin::register_profile');
 $routes->get('/dashboard', 'Admin::dashboard');
 $routes->get('/Login', 'Admin::Login');
+$routes->get('/logout', 'Admin::logout');
 $routes->get('/operator', 'Admin::operator');
+
 
 
 

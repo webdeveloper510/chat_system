@@ -93,19 +93,26 @@ class Admin extends BaseController
 
 
      function login_user(){
-        $data = $this->model->user_login();
-        foreach($data as $val){
-            print_r($val->email); 
-        }
+        $data = array(
+            'email'=>$_POST['email'],
+            'password'=>$_POST['password'],
+        );
+        $data = $this->model->user_login($data);
+        $this->session->set('UserLogin',$data);      
         if($data){
-            echo "Login successfull";
-        }else{
-            echo "something went wrong";
+            return json_encode($data);
         }
 
      }
 
-        
+    function logout(){
+        $session = session();
+        $user = $session->get('UserLogin');
+        if($user){
+            $session->destroy();
+            return view('login');
+        }
+    }
 
 
 

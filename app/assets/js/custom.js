@@ -7,7 +7,7 @@ $(".register_user").submit(function (event) {
         success: function (responseData,) {
             console.log(responseData); 
             if (responseData == 1) {
-                console.log(responseData); 
+                // console.log(responseData); 
             setTimeout(function(){
                     window.location.href = "http://localhost:8080/chat_system/Login"
             }, 3000);
@@ -27,12 +27,13 @@ $('.user_login').submit(function (event) {
         url: "http://localhost:8080/chat_system/Admin/login_user",
         data: $(this).serialize(),
         success: function (responseData,) {
-            console.log(responseData);
-            if (responseData == 1) {
-                console.log(responseData); 
-            setTimeout(function(){
-                    window.location.href = "http://localhost:8080/chat_system/operator"
-            }, 3000);
+
+            if (responseData) {
+            $('#msg').show();
+            $('#msg').html('Login successfull');
+                setTimeout(function(){
+                        window.location.href = "http://localhost:8080/chat_system/operator"
+                }, 3000);
                
             } else {
                 alert('something went wrong');

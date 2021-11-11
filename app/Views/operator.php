@@ -25,6 +25,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">My Profile</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8080/chat_system/logout">Logout</a>
+              </li>
             
             </ul>
           </div>
