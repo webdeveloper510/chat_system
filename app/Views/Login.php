@@ -9,14 +9,15 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="./app/assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="bg-default">
@@ -34,7 +35,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="dashboard.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="./assets/img/brand/blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -107,13 +108,14 @@
               <div class="text-center text-muted mb-4">
                 <small> Log in </small>
               </div>
-              <form role="form">
+
+              <form role="form" class="user_login" method="post" autocomplete="off">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" placeholder="Email" name="email" type="email" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -121,19 +123,15 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" placeholder="Password" name="password" type="password">
                   </div>
                 </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
+                  <button type="submit"  class="btn btn-primary my-4">Sign in</button>
                 </div>
               </form>
+
+
             </div>
           </div>
           <div class="row mt-3">
@@ -178,13 +176,14 @@
   </footer>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <script src="./app/assets/js/custom.js"></script>
+  <script src="./app/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="./app/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./app/assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="./app/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="./app/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="./app/assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

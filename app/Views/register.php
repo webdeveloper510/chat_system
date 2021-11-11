@@ -1,4 +1,6 @@
-
+<?php
+    $local_session = \Config\Services::session(); // Needed for Point 5
+?>
 <!DOCTYPE html>
 <html>
 
@@ -9,14 +11,16 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="./app/assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="./app/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="http://parsleyjs.org/dist/parsley.js"></script>
 </head>
 
 <body class="bg-default">
@@ -34,7 +38,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="dashboard.html">
-                <img src="../assets/img/brand/blue.png">
+                <img src="./assets/img/brand/blue.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -117,51 +121,70 @@
       <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
           <div class="card bg-secondary border-0">
-            
+<!-- <p id="check"><#?php echo $local_session->get('msg')?></p> -->
+       
+
+          
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
                 <small> Sign up </small>
               </div>
-              <form role="form">
+
+              <form class="register_user" id= "validate_form" method="post"  role="form" autocomplete="off">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text">
+                    <input class="form-control" placeholder="Name" name="name" type="text" required data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup">
                   </div>
                 </div>
+                
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="email">
+                    <input class="form-control" placeholder="Email" name="email" type="email"  required data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-trigger="keyup"  quired>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input class="form-control" placeholder="Password" name="password" type="password" required data-parsley-length="[8, 16]" data-parsley-trigger="keyup">
+                  </div><br>
+
+  
+                  <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Confirm Password" name="confirm_password" type="password" required data-parsley-length="[8, 16]" data-parsley-trigger="keyup">
                   </div>
                 </div>
-                <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
-                <div class="row my-4">
-                  <div class="col-12">
-                    <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                      <label class="custom-control-label" for="customCheckRegister">
-                        <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                      </label>
+
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-role-83"></i></span>
                     </div>
-                  </div>
+                    <select class="form-select form-control" name="role" aria-label="Default select example" required>
+                    <option selected>Choose Role</option>
+                      <option value="1">Admin</option>
+                      <option value="2">Operator</option>
+                      <option value="3">Customer</option>
+                    </select>
+                    </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4">Create account</button>
+                  <button type="submit" id="reg_btn" class="btn btn-primary mt-4 ">Create account</button>
                 </div>
-              </form>
+        </form>
+              
             </div>
           </div>
         </div>
@@ -198,13 +221,14 @@
   </footer>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  
+  <script src="./app/assets/js/custom.js"></script>
+  <script src="./app/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./app/assets/vendor/js-cookie/js.cookie.js"></script>
+  <script src="./app/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+  <script src="./app/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script src="./app/assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

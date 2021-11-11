@@ -4,9 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+
 class Admin extends BaseController
 {
+   
 
+    
     public $model;
 
     public function __construct()
@@ -14,7 +17,10 @@ class Admin extends BaseController
         
         //parent::__construct(); 
 
-       $this->model= new \App\Models\Admin;  
+       $this->model= new \App\Models\Admin; 
+       $this->session = \Config\Services::session();
+     
+       
     }
 
     public function index()
@@ -22,67 +28,88 @@ class Admin extends BaseController
         echo "welcome to chat system project";
     }
 
-    // public function insert()
-    // {       
-    //     $user_data =[
-    //         'username'   =>$this->request->getVar('username'),
-    //         'gender'     =>$this->request->getVar('gender'),
-    //         'age'        =>$this->request->getVar('age'),
-    //         'country'    =>$this->request->getVar('country'),
-    //         'postarea'   =>$this->request->getVar('postarea'),
-    //         'city'       =>$this->request->getVar('city'),
-    //         'coins'      =>$this->request->getVar('coins'),
-    //         'status'     =>$this->request->getVar('status'),
-    //         'profiletext'=>$this->request->getVar('profiletext'),      
-    //         'name'       =>$this->request->getVar('name'), 
-    //         'residence'  =>$this->request->getVar('residence'),
-    //         'profession' =>$this->request->getVar('profession'),
-    //         'family'     => $this->request->getVar('family'), 
-    //         'hobbies'    =>$this->request->getVar('hobbies')];
 
-    //         $db =\config\Database::connect(); 
-    //         $data= $db->table('profile');
-    //         $data->insert($user_data);              
-        
-    // }
-
-
-    public function register_profile(){
+     function register_profile(){
 
         return view('register');
     }
 
-    public function users_profile(){
+    function user_profile(){
 
-            $res= $this->model->fetch_role_id();
-            $user_role_id =$res['id'];
-             
-            $data = [
-                'id' =>$this->input->post('id'),
-                'name' => $this->input->post('name'),                    
-                'email'  => $this->input->post('email'),
-                'role'     => $user_role_id,
-                'password'    => $this->input->post('password'),
-                'created_at'    => $this->input->post('created_at'),
-                'updated_at'    =>$this->input->post('updated_at'),  
-
-                 ];
-
-                 $user_data = $this->model ->insert_users_data($data);
-                    if ($user_data){
-                        $session->setFlashdata('msg', 'Record Inserted successfully');
-                        return view('');
-                    }else{
-                        $session->setFlashdata('error', 'something went wrong');
-                    }
-
-        
-
+        return view('profile');
     }
 
 
+    function dashboard(){
+    
+        return view('dashboard');
 
-    public function create_profile()
+    }
+
+    function Login(){
+    
+        return view('Login');
+
+    }
+
+    function operator(){
+    
+        return view('operator');
+
+    }
+   
+
+     function create_user(){
+        $session = session();
+        if($_POST['password']==$_POST['confirm_password']){
+            $data = array(
+                'name' => $_POST['name'],                    
+                'email'  => $_POST['email'],
+                'password'=>md5($_POST['password']),
+                'role'=>$_POST['role'],
+            );
+            $res = $this->model ->insert_create_user($data);
+    
+            if ($res=='1' || $res==1){
+                $this->session->set('msg','User Created Successfully');
+                $page['view_data'] =$this->session->get('msg'); // Normal way
+                $page['session'] =$this->session;  
+                header('Content-Type: application/json');
+                echo json_encode($res);
+                die;
+               
+               
+            }else{
+                $this->session->set_flashdata('error', 'Something went wrong');
+            }
+
+    }else{
+        echo "password didn't match";
+    }
+
+     }
+
+
+
+
+     function login_user(){
+        $data = $this->model->user_login();
+        foreach($data as $val){
+            print_r($val->email); 
+        }
+        if($data){
+            echo "Login successfull";
+        }else{
+            echo "something went wrong";
+        }
+
+     }
+
+        
+
+
+
+     function create_profile()
     {       
             $data = [];
 
@@ -108,7 +135,7 @@ class Admin extends BaseController
 
                     $res = $this->model ->insert_data($detail);
                     if ($res){
-                        $session->setFlashdata('msg', 'Record Inserted successfully');
+  
                         return view('');
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
@@ -120,7 +147,7 @@ class Admin extends BaseController
                 return redirect()->to(base_url('register'));
             }
 
-                public function Profile_Update_Data(){
+                 function Profile_Update_Data(){
 
                     $data = array(
                     'username'=> $this->input->post('username'),                    
