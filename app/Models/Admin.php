@@ -111,7 +111,14 @@ public function __construct()
         $query = $this->db->table('users')->where('email',$email,'password',$password)->get();
         $results = $query->getResult();
         return $results;
-    }   
+    }  
+    
+
+     function getAllusers(){
+        $builder = $this->db->table('users');
+        $query   = $builder->get()->getResult(); 
+        return $query;
+     }
 } 
 
 

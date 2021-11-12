@@ -20,7 +20,8 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="http://parsleyjs.org/dist/parsley.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" id="getBaseUrl" base_url="http://localhost:8080/chat_system"></script>
+
 </head>
 
 <body class="bg-default">
@@ -127,6 +128,8 @@
           
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
+              <div style="display:none;" id ="msg" class="alert alert-success" role="alert">
+              </div>
                 <small> Sign up </small>
               </div>
 

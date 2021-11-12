@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/chat_system/';
+    public $baseURL = 'http://localhost:8080/chat_system';
 
     /**
      * --------------------------------------------------------------------------

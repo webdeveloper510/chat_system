@@ -57,6 +57,12 @@ class Admin extends BaseController
         return view('operator');
 
     }
+
+    function chat(){
+    
+        return view('chat');
+
+    }
    
 
      function create_user(){
@@ -196,6 +202,15 @@ class Admin extends BaseController
                         $session->setFlashdata('error', 'something went wrong');
                     }
                     
+                }
+
+                function users(){
+
+                    $data['allusers']=$this->model->getAllusers();
+                    // echo "<pre>"; 
+                    // print_r($data);die;
+                                     
+                    return view('users', $data);
                 }
 
 

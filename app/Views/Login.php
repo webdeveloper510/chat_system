@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./app/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" id="getBaseUrl" base_url="http://localhost:8080/chat_system"></script>
 </head>
 
 <body class="bg-default">
@@ -142,7 +142,7 @@
               <a href="#" class="text-light"><small>Forgot password?</small></a>
             </div>
             <div class="col-6 text-right">
-              <a href="#" class="text-light"><small>Create new account</small></a>
+              <a href="<?=base_url('/register')?>" class="text-light"><small>Create new account</small></a>
             </div>
           </div>
         </div>

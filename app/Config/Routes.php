@@ -40,7 +40,10 @@ $routes->get('/register', 'Admin::register_profile');
 $routes->get('/dashboard', 'Admin::dashboard');
 $routes->get('/Login', 'Admin::Login');
 $routes->get('/logout', 'Admin::logout');
+$routes->get('/chat', 'Admin::chat');
 $routes->get('/operator', 'Admin::operator');
+$routes->get('/users', 'Admin::users');
+
 
 
 

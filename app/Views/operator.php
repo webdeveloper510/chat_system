@@ -4,9 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./assets/css/argon.css" type="text/css">
+    <link rel="stylesheet" href="./app/assets/css/argon.css" type="text/css">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Hello, world!</title>
   </head>
@@ -20,13 +20,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link "  href="chat.html">Chat Queue</a>
+                <a class="nav-link "  href="<?=base_url('/chat')?>">Chat Queue</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">My Profile</a>
+              </li>              
+              <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('/users')?>">Users</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:8080/chat_system/logout">Logout</a>
+                <a class="nav-link" href="<?=base_url('/logout')?>">Logout</a>
               </li>
             
             </ul>
@@ -39,7 +42,7 @@
               <div class="col-md-10">
                   <div class="body-content p-4">
                       <div class="text-center my-4">
-                        <button type="button" class="btn btn-danger">Launch Chat</button>
+                       <a href ="http://localhost:8080/chat_system/dashboard"> <button type="button"class="btn btn-danger"> Launch Chat</button></a>
                       </div>
                       <div class="row">
                           <div class="col-md-8">
