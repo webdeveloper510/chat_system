@@ -13,6 +13,7 @@
 
     <!-- Begin emoji-picker Stylesheets -->
     <link href="https://onesignal.github.io/emoji-picker/lib/css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="./app/assets/css/argon.css?v=1.2.0" type="text/css">
   </head>
   <style>
       .header-chat {
@@ -177,6 +178,8 @@ img.profile {
                                 <div class="about">
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
                                 </div>
+
+                                
                                 <table class="table table-borderless">
                                     <tr>
                                         <th>
@@ -220,6 +223,8 @@ img.profile {
                                     </tr>
                                 </table>
                             </div>
+
+                            
                             <div class="col-6">
                                 <table class="table table-borderless">
                                     <tr>
@@ -227,7 +232,7 @@ img.profile {
                                             Username :
                                         </th>
                                         <td class="text-right">
-                                            <small> scripofix</small>
+                                            <small> <?php echo($getUserProfileData[0]->username)?></small>
                                         </td>
                                     </tr>
                                     <tr>
@@ -235,7 +240,7 @@ img.profile {
                                             typ :
                                         </th>
                                         <td class="text-right">
-                                            Customer
+                                        <?php echo($getUserProfileData[0]->type)?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -243,7 +248,7 @@ img.profile {
                                             Gender :
                                         </th>
                                         <td class="text-right">
-                                            M
+                                        <?php echo($getUserProfileData[0]->gender)?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -251,7 +256,7 @@ img.profile {
                                             Age :
                                         </th>
                                         <td class="text-right">
-                                            1998-11-07
+                                        <?php echo($getUserProfileData[0]->age)?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -259,7 +264,7 @@ img.profile {
                                             Country :
                                         </th>
                                         <td class="text-right">
-                                            Deutschland
+                                        <?php echo($getUserProfileData[0]->country)?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -267,7 +272,7 @@ img.profile {
                                             Post-Area :
                                         </th>
                                         <td class="text-right">
-                                            Schleswig-Holstein
+                                        <?php echo($getUserProfileData[0]->postarea)?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -275,7 +280,7 @@ img.profile {
                                             Coins :
                                         </th>
                                         <td class="text-right">
-                                            45
+                                        <?php echo($getUserProfileData[0]->coins)?> 
                                         </td>
                                     </tr>
                                     <tr>
@@ -283,7 +288,7 @@ img.profile {
                                             Status :
                                         </th>
                                         <td class="text-right">
-                                            online
+                                        <?php echo($getUserProfileData[0]->status)?> 
                                         </td>
                                     </tr>
                                 </table>
@@ -294,30 +299,36 @@ img.profile {
                                         <input type="text" class="form-control"/>
                                     </div>
                                 </div>
+
                                 <form>
+
+                                
+                                 
+                                   
                                     <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">Name :</label>
-                                      <input type="text" class="form-control">
+                                      <label for="exampleInputEmail1" class="form-label">Name : </label>
+                                      <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->name)?>">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Place of Residence :</label>
+                                        <label for="exampleInputEmail1" class="form-label">Place of Residence :<?php echo($getUserProfileData[0]->residence)?></label>
                                         <input type="text" class="form-control">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Profession :</label>
+                                        <label for="exampleInputEmail1" class="form-label">Profession :<?php echo($getUserProfileData[0]->profession)?></label>
                                         <input type="text" class="form-control">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Family :</label>
+                                        <label for="exampleInputEmail1" class="form-label">Family :<?php echo($getUserProfileData[0]->family)?></label>
                                         <input type="text" class="form-control">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Hobbies :</label>
+                                        <label for="exampleInputEmail1" class="form-label">Hobbies :<?php echo($getUserProfileData[0]->hobbies)?></label>
                                         <input type="text" class="form-control">
                                       </div>
                                    
                                    
                                   </form>
+                                 
                             </div>
                         </div>
                     </div>
@@ -666,7 +677,7 @@ img.profile {
     </script>
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="./app/assets/js/argon.js?v=1.2.0"></script>
    
   </body>
 </html>

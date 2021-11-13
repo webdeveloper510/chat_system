@@ -43,6 +43,10 @@ $routes->get('/logout', 'Admin::logout');
 $routes->get('/chat', 'Admin::chat');
 $routes->get('/operator', 'Admin::operator');
 $routes->get('/users', 'Admin::users');
+$routes->get('/chat/(:any)', 'Admin::getusersprofile/$1'); 
+
+
+
 
 
 

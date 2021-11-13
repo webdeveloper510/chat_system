@@ -69,8 +69,12 @@ public function __construct()
 
     public function insert_data($data)
 {
+
+    //print_r($data);die;
      
     $record = $this->db->table($this->table)->insert($data);
+
+    //print_r($record);
     return $record;
 
     }
@@ -119,6 +123,27 @@ public function __construct()
         $query   = $builder->get()->getResult(); 
         return $query;
      }
+
+
+     function getAllprofile(){
+        $builder = $this->db->table('profile');
+        $query = $builder->get()->getResult();
+        //print_r($query);die;
+        return $query;
+
+
+     }
+
+    function getUsersById($id){
+       $db = \Config\Database::connect();
+        $query   = $db->table('profile');
+        $data = $this->db->table('profile')->where('user_id',$id)->get();
+        $results = $data->getResult();
+        //print_r($results);die;
+         return $results;
+
+    }
+    
 } 
 
 

@@ -6,11 +6,9 @@ use App\Controllers\BaseController;
 
 
 class Admin extends BaseController
-{
-   
-
-    
+{    
     public $model;
+    public $input;
 
     public function __construct()
     {
@@ -29,15 +27,18 @@ class Admin extends BaseController
     }
 
 
+
      function register_profile(){
 
         return view('register');
     }
 
+
     function user_profile(){
 
         return view('profile');
     }
+
 
 
     function dashboard(){
@@ -46,11 +47,13 @@ class Admin extends BaseController
 
     }
 
+
     function Login(){
     
         return view('Login');
 
     }
+
 
     function operator(){
     
@@ -58,8 +61,11 @@ class Admin extends BaseController
 
     }
 
+
     function chat(){
-    
+        $data['alluserprofile']= $this->model->getAllprofile();
+        // echo "<pre>"; 
+        // print_r($data);die;    
         return view('chat');
 
     }
@@ -82,16 +88,14 @@ class Admin extends BaseController
                 $page['session'] =$this->session;  
                 header('Content-Type: application/json');
                 echo json_encode($res);
-                die;
-               
-               
-            }else{
-                $this->session->set_flashdata('error', 'Something went wrong');
-            }
+                die;  
 
-    }else{
-        echo "password didn't match";
-    }
+                }else{
+                $this->session->set_flashdata('error', 'Something went wrong');
+                 }
+                }else{
+                    echo "password didn't match";
+             }
 
      }
 
@@ -111,6 +115,8 @@ class Admin extends BaseController
 
      }
 
+
+
     function logout(){
         $session = session();
         $user = $session->get('UserLogin');
@@ -122,99 +128,113 @@ class Admin extends BaseController
 
 
 
-     function create_profile()
-    {       
-            $data = [];
+     function create_user_profile()
+    {      
+                $detail = [    
+                    'user_id'  =>$_POST['id'],  
+                    'username'  =>$_POST['username'],  
+                    'type'  =>$_POST['type'],             
+                    'gender'  =>$_POST['gender'],
+                    'age'     =>$_POST['age'],
+                    'country'    =>$_POST['country'],
+                    'postarea'    =>$_POST['postarea'],
+                    'city'    =>$_POST['city'],
+                    'coins'    =>$_POST['coins'],
+                    'status'    =>$_POST['status'],
+                    'profiletext'    =>$_POST['profiletext'],
+                    'name'    =>$_POST['name'],
+                    'residence'    =>$_POST['residence'],
+                    'profession'    =>$_POST['profession'],
+                    'family'    =>$_POST['family'],
+                    'hobbies'    =>$_POST['hobbies'],
+                ];
 
-    
-            if ($this->request->getMethod() == 'post') {               
-                $detail = [
-                    'user_id' =>$this->input->post('user_id'),
-                    'username' => $this->input->post('username'),                    
-                    'gender'  => $this->input->post('gender'),
-                    'age'     => $this->input->post('age'),
-                    'country'    => $this->input->post('country'),
-                    'postarea'    => $this->input->post('postarea'),
-                    'city'    =>$this->input->post('city'),
-                    'coins'    => $this->input->post('coins'),
-                    'status'    => $this->input->post('status'),
-                    'profiletext'    =>$this->input->post('profiletext'),
-                    'name'    => $this->input->post('name'),
-                    'residence'    =>$this->input->post('residence'),
-                    'profession'    =>$this->input->post('profession'),
-                    'family'    =>$this->input->post('family'),
-                    'hobbies'    =>$this->input->post('hobbies'),
-                        ];
+                // print_r($detail );
 
                     $res = $this->model ->insert_data($detail);
+                    //print_r($res); die;
                     if ($res){
   
-                        return view('');
+                        return redirect()->to(base_url('chat'));
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
-                    }
-
-                    
-                } 
+                    }                 
+                
             
-                return redirect()->to(base_url('register'));
+                return redirect()->to(base_url('users'));
             }
 
-                 function Profile_Update_Data(){
 
-                    $data = array(
-                    'username'=> $this->input->post('username'),                    
-                    'gender'=> $this->input->post('gender'),
-                    'age'=> $this->input->post('age'),
-                    'country'=> $this->input->post('country'),
-                    'postarea'=> $this->input->post('postarea'),
-                    'city'=> $this->input->post('city'),
-                    'coins'=> $this->input->post('coins'),
-                    'status'=> $this->input->post('status'),
-                    'profiletext'=> $this->input->post('profiletext'),
-                    'name'=> $this->input->post('name'),
-                    'residence'=> $this->input->post('residence'),
-                    'profession'=> $this->input->post('profession'),
-                    'family'=> $this->input->post('family'),
-                    'hobbies'=> $this->input->post('hobbies'),
-                    );
+
+                //  function Profile_Update_Data(){
+
+                //     $data = array(
+                //     'username'=> $this->input->post('username'),                    
+                //     'gender'=> $this->input->post('gender'),
+                //     'age'=> $this->input->post('age'),
+                //     'country'=> $this->input->post('country'),
+                //     'postarea'=> $this->input->post('postarea'),
+                //     'city'=> $this->input->post('city'),
+                //     'coins'=> $this->input->post('coins'),
+                //     'status'=> $this->input->post('status'),
+                //     'profiletext'=> $this->input->post('profiletext'),
+                //     'name'=> $this->input->post('name'),
+                //     'residence'=> $this->input->post('residence'),
+                //     'profession'=> $this->input->post('profession'),
+                //     'family'=> $this->input->post('family'),
+                //     'hobbies'=> $this->input->post('hobbies'),
+                //     );
         
-                    $res = $this->model ->update_records($data);
+                    // $res = $this->model ->update_records($data);
                     
-                    if($res){
-                        $session->setFlashdata('msg', 'Record Inserted successfully');
-                        return view('');
-                    }else{
-                        $session->setFlashdata('error', 'something went wrong');
+                    // if($res){
+                    //     $session->setFlashdata('msg', 'Record Inserted successfully');
+                    //     return view('');
+                    // }else{
+                    //     $session->setFlashdata('error', 'something went wrong');
+                    // }
+
+
+                    function Add_Manually_Coin(){
+                    
+                        $coin = $this->input->post('coin');
+                        $res = $this->model ->insert_coin($data);
+                        if ($res){
+                            $session->setFlashdata('msg', 'Coin Inserted successfully');
+                            return view('');
+                        }else{
+                            $session->setFlashdata('error', 'something went wrong');
+                        }
+                        
+                    }
+    
+                    function users(){
+    
+                        $data['allusers']= $this->model->getAllusers();
+                        // echo "<pre>"; 
+                        // print_r($data);die;
+                                         
+                        return view('users', $data);
                     }
 
 
+
+                   function getusersprofile($id){
+                    $data['getUserProfileData'] = $this->model->getUsersById($id);
+                    //    echo "<pre>";
+                    //    print_r($data);die;
+                       return view('/chat',$data);
+
+                   }         
+
+
                 }
 
-                function Add_Manually_Coin(){
-                    
-                    $coin = $this->input->post('coin');
-                    $res = $this->model ->insert_coin($data);
-                    if ($res){
-                        $session->setFlashdata('msg', 'Coin Inserted successfully');
-                        return view('');
-                    }else{
-                        $session->setFlashdata('error', 'something went wrong');
-                    }
-                    
-                }
-
-                function users(){
-
-                    $data['allusers']=$this->model->getAllusers();
-                    // echo "<pre>"; 
-                    // print_r($data);die;
-                                     
-                    return view('users', $data);
-                }
+               
+                
 
 
-        }
+        
 
 
 
