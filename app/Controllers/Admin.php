@@ -131,75 +131,49 @@ class Admin extends BaseController
      function create_user_profile()
     {      
                 $detail = [    
-                    'user_id'  =>$_POST['id'],  
-                    'username'  =>$_POST['username'],  
-                    'type'  =>$_POST['type'],             
-                    'gender'  =>$_POST['gender'],
-                    'age'     =>$_POST['age'],
+                    'user_id'    =>$_POST['id'],  
+                    'username'   =>$_POST['username'],  
+                    'type'       =>$_POST['type'],             
+                    'gender'     =>$_POST['gender'],
+                    'age'        =>$_POST['age'],
                     'country'    =>$_POST['country'],
-                    'postarea'    =>$_POST['postarea'],
-                    'city'    =>$_POST['city'],
-                    'coins'    =>$_POST['coins'],
-                    'status'    =>$_POST['status'],
-                    'profiletext'    =>$_POST['profiletext'],
-                    'name'    =>$_POST['name'],
-                    'residence'    =>$_POST['residence'],
-                    'profession'    =>$_POST['profession'],
-                    'family'    =>$_POST['family'],
+                    'postarea'   =>$_POST['postarea'],
+                    'city'       =>$_POST['city'],
+                    'coins'      =>$_POST['coins'],
+                    'status'     =>$_POST['status'],
+                    'profiletext'=>$_POST['profiletext'],
+                    'name'       =>$_POST['name'],
+                    'residence'  =>$_POST['residence'],
+                    'profession' =>$_POST['profession'],
+                    'family'     =>$_POST['family'],
                     'hobbies'    =>$_POST['hobbies'],
+                 
                 ];
+                $data =$this->model->getDataById('user_id', $_POST['id'],'profile');
 
-                // print_r($detail );
-
-                    $res = $this->model ->insert_data($detail);
-                    //print_r($res); die;
-                    if ($res){
-  
-                        return redirect()->to(base_url('chat'));
+                if($data){
+                    echo 'exist'; 
+                }
+                else{
+                    $res = $this->model->insert_data($detail);
+                    if ($res==1 || $res=='1'){
+                        echo 1;
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
-                    }                 
+                    }   
+                }                              
+              
                 
-            
-                return redirect()->to(base_url('users'));
             }
 
 
 
-                //  function Profile_Update_Data(){
-
-                //     $data = array(
-                //     'username'=> $this->input->post('username'),                    
-                //     'gender'=> $this->input->post('gender'),
-                //     'age'=> $this->input->post('age'),
-                //     'country'=> $this->input->post('country'),
-                //     'postarea'=> $this->input->post('postarea'),
-                //     'city'=> $this->input->post('city'),
-                //     'coins'=> $this->input->post('coins'),
-                //     'status'=> $this->input->post('status'),
-                //     'profiletext'=> $this->input->post('profiletext'),
-                //     'name'=> $this->input->post('name'),
-                //     'residence'=> $this->input->post('residence'),
-                //     'profession'=> $this->input->post('profession'),
-                //     'family'=> $this->input->post('family'),
-                //     'hobbies'=> $this->input->post('hobbies'),
-                //     );
-        
-                    // $res = $this->model ->update_records($data);
-                    
-                    // if($res){
-                    //     $session->setFlashdata('msg', 'Record Inserted successfully');
-                    //     return view('');
-                    // }else{
-                    //     $session->setFlashdata('error', 'something went wrong');
-                    // }
-
 
                     function Add_Manually_Coin(){
                     
-                        $coin = $this->input->post('coin');
-                        $res = $this->model ->insert_coin($data);
-                        if ($res){
+                         $coin = $this->input->post('coin');
+                         $res = $this->model ->insert_coin($data);
+                         if ($res){
                             $session->setFlashdata('msg', 'Coin Inserted successfully');
                             return view('');
                         }else{
@@ -210,9 +184,7 @@ class Admin extends BaseController
     
                     function users(){
     
-                        $data['allusers']= $this->model->getAllusers();
-                        // echo "<pre>"; 
-                        // print_r($data);die;
+                        $data['allusers']= $this->model->getAllusers();        
                                          
                         return view('users', $data);
                     }

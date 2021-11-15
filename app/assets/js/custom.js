@@ -52,12 +52,11 @@ $('.user_login').submit(function (event) {
 
 
    function getSingleUser(users){
-
         $('#myModal').modal('show');
         $('#userid').val(users.id);
         $('#name').val(users.name);
-        $('#email').val(users.email);
-        //console.log(users); 
+        $('#email').val(users.email);        
+        console.log(users); 
         }
 
                
@@ -70,15 +69,22 @@ $('.user_login').submit(function (event) {
                 url: BASE_URL+'/Admin/create_user_profile',
                 data: $(this).serialize(),
                 success: function (responseData) {
-                    console.log(responseData);        
-                    if (responseData) {
+                    console.log(responseData);      
+                    if (responseData==1) {
                     $('#alertmsg').show();
                     $('#alertmsg').html('Profile created successfully');
                         setTimeout(function(){
                                 window.location.href =BASE_URL+'/users'
-                        }, 3000);
+                        }, 5000);
                        
-                    } else {
+                    } 
+                    else if(responseData=='exist'){                                   
+
+                        alert('Already exist');
+
+                    }
+                    
+                    else {
                         alert('something went wrong');
                     }
                 },

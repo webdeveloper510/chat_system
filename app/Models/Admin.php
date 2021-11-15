@@ -69,15 +69,20 @@ public function __construct()
 
     public function insert_data($data)
 {
-
-    //print_r($data);die;
-     
+    $data['created_at']=date('m/d/y');
+    $data['updated_at']=date('m/d/y');
     $record = $this->db->table($this->table)->insert($data);
-
-    //print_r($record);
     return $record;
 
     }
+
+    function getDataById($key,$id, $table){
+
+        $query = $this->db->table($table)->where($key,$id)->get();
+        $results = $query->getResult();
+        return $results;
+
+    } 
 
     function update_records($data){
         $table->where('id', 1);
@@ -117,6 +122,7 @@ public function __construct()
         return $results;
     }  
     
+    
 
      function getAllusers(){
         $builder = $this->db->table('users');
@@ -140,9 +146,12 @@ public function __construct()
         $data = $this->db->table('profile')->where('user_id',$id)->get();
         $results = $data->getResult();
         //print_r($results);die;
-         return $results;
+        return $results;
 
     }
+
+
+
     
 } 
 

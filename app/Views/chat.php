@@ -296,7 +296,7 @@ img.profile {
                                 <div class="forms">
                                     <h4>Profiltext :</h4>
                                     <div class="Profiltext">
-                                        <input type="text" class="form-control"/>
+                                        <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->profiletext)?>"/>
                                     </div>
                                 </div>
 
@@ -310,20 +310,20 @@ img.profile {
                                       <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->name)?>">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Place of Residence :<?php echo($getUserProfileData[0]->residence)?></label>
-                                        <input type="text" class="form-control">
+                                        <label for="exampleInputEmail1" class="form-label">Place of Residence :</label>
+                                        <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->residence)?>">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Profession :<?php echo($getUserProfileData[0]->profession)?></label>
-                                        <input type="text" class="form-control">
+                                        <label for="exampleInputEmail1" class="form-label">Profession :</label>
+                                        <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->profession)?>">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Family :<?php echo($getUserProfileData[0]->family)?></label>
-                                        <input type="text" class="form-control">
+                                        <label for="exampleInputEmail1" class="form-label">Family :</label>
+                                        <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->family)?>">
                                       </div>
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Hobbies :<?php echo($getUserProfileData[0]->hobbies)?></label>
-                                        <input type="text" class="form-control">
+                                        <label for="exampleInputEmail1" class="form-label">Hobbies :</label>
+                                        <input type="text" class="form-control" value="<?php echo($getUserProfileData[0]->hobbies)?>">
                                       </div>
                                    
                                    
