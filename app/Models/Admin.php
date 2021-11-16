@@ -1,19 +1,14 @@
 <?php
-
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-
 class Admin extends Model
-{
-    
+{  
     protected $output;
     protected $db;
     protected $session;
-    public $model;
-    public $builder;
-    
+    public $model;    
     
 
 public function __construct()
@@ -62,40 +57,35 @@ public function __construct()
     function insert_users_data($data){
         $builder = $db->table('users');
         $insert_data = $this->db->table($builder)->insert($data);
-        return $insert_data;
-        
+        return $insert_data;        
     }
 
 
 
-    public function insert_data($data)
-{
-    $data['created_at']=date('m/d/y');
-    $data['updated_at']=date('m/d/y');
-    $record = $this->db->table($this->table)->insert($data);
-    return $record;
-
+    public function insert_data($data){
+        $data['created_at']=date('m/d/y');
+        $data['updated_at']=date('m/d/y');
+        $record = $this->db->table($this->table)->insert($data);
+        return $record;
     }
+
+
 
     function getDataById($key,$id, $table){
-
         $query = $this->db->table($table)->where($key,$id)->get();
         $results = $query->getResult();
         return $results;
-
     } 
+
+
+
 
     function update_records($data){
         $table->where('id', 1);
         $table->update($data);
     }
 
-    function insert_coin($coin){
-        $coin_res = $this->db->table($table)->insert($coin)->where('coins',$coin);
-        return $coin_res;
-    }
 
-    
 
     function fetch_role_id(){
         $builder = $db->table('role');
@@ -105,17 +95,14 @@ public function __construct()
     }    
 
     function insert_create_user($data){
-        // $builder = $table('users');
         $data['created_at']=date('m/d/y');
-        $data['updated_at']=date('m/d/y');
-           
+        $data['updated_at']=date('m/d/y');           
         $record = $this->db->table('users')->insert($data);
         return $record;
     }
 
 
-    function user_login($data){
-        
+    function user_login($data){        
         $db = \Config\Database::connect();
         $query   = $db->table('users');
         $email = $data['email'];
@@ -123,9 +110,9 @@ public function __construct()
         $query = $this->db->table('users')->where('email',$email,'password',$password)->get();
         $results = $query->getResult();
         return $results;
-    }  
+    }      
     
-    
+
 
      function getAllusers(){
         $builder = $this->db->table('users');
@@ -134,40 +121,38 @@ public function __construct()
      }
 
 
+
     function getAllusersprofile(){
         $builder = $this->db->table('profile');
-        $query   = $builder->get()->getResult(); 
-        //print_r($query);die;
+        $query   = $builder->get()->getResult();         
         return $query;
-
     }
+
 
 
      function getAllprofile(){
         $builder = $this->db->table('profile');
-        $query = $builder->get()->getResult();
-        //print_r($query);die;
+        $query = $builder->get()->getResult();        
         return $query;
-
-
      }
+
+
 
      function updateUserData($detail){
         $query = $this->db->table('profile')->where('user_id',$detail['user_id'])->update($detail);
         return $query;
-
      }
+
+
 
     function getUsersById($id){
        $db = \Config\Database::connect();
         $query   = $db->table('profile');
         $data = $this->db->table('profile')->where('user_id',$id)->get();
         $results = $data->getResult();
-        //print_r($results);die;
         return $results;
 
-    }
-    
+       }    
 
     }
 

@@ -103,14 +103,9 @@ button {
                 </div>
 
                 <div class="form-group mb-3">
-                <label class="form-label">Type</label>
-                 
-                    <select class="form-select form-control" id="selectbox" name="role" aria-label="Default select example" required>
-                    <option selected >Choose Type</option>
-                      <option value="1">Operator</option>
-                      <option value="2">Customer</option>
-                    </select>
-                   
+                    <label class="form-label">Type</label>
+                    <input class="form-control"  id="type" placeholder="type" name="type"  type="text" >
+                  
                 </div>
                 
 

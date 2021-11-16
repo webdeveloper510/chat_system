@@ -1,25 +1,21 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-
 
 class Admin extends BaseController
 {    
     public $model;
     public $input;
 
+
     public function __construct()
     {
-        
-        //parent::__construct(); 
-
        $this->model= new \App\Models\Admin; 
-       $this->session = \Config\Services::session();
-     
-       
+       $this->session = \Config\Services::session();   
     }
+
+
 
     public function index()
     {
@@ -34,6 +30,7 @@ class Admin extends BaseController
     }
 
 
+
     function user_profile(){
 
         return view('profile');
@@ -41,35 +38,33 @@ class Admin extends BaseController
 
 
 
+
     function dashboard(){
     
         return view('dashboard');
-
     }
 
 
+    
     function Login(){
     
         return view('Login');
-
     }
 
 
     function operator(){
     
         return view('operator');
-
     }
+
 
 
     function chat(){
-        $data['alluserprofile']= $this->model->getAllprofile();
-        // echo "<pre>"; 
-        // print_r($data);die;    
+        $data['alluserprofile']= $this->model->getAllprofile();  
         return view('chat');
-
     }
    
+
 
      function create_user(){
         $session = session();
@@ -80,8 +75,7 @@ class Admin extends BaseController
                 'password'=>md5($_POST['password']),
                 'role'=>$_POST['role'],
             );
-            $res = $this->model ->insert_create_user($data);
-    
+            $res = $this->model ->insert_create_user($data);    
             if ($res=='1' || $res==1){
                 $this->session->set('msg','User Created Successfully');
                 $page['view_data'] =$this->session->get('msg'); 
@@ -89,15 +83,13 @@ class Admin extends BaseController
                 header('Content-Type: application/json');
                 echo json_encode($res);
                 die;  
-
                 }else{
                 $this->session->set_flashdata('error', 'Something went wrong');
                  }
                 }else{
                     echo "password didn't match";
              }
-
-     }
+       }
 
 
 
@@ -127,7 +119,7 @@ class Admin extends BaseController
     }
 
 
-
+ 
      function create_user_profile()
     {              
                 $detail = [    
@@ -163,52 +155,41 @@ class Admin extends BaseController
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
                     }   
-                }                              
-              
-                
+                }                           
+                             
             }
+
                     
-    
-                    function users(){
-    
-                        $data['allusers']= $this->model->getAllusers();  
-                        
-                        $data['allprofile']=$this->model->getAllusersprofile();
 
-                        // $i = array_search(8, array_column($data['allprofile'], 'user_id'));
-                        // if($i!==false){
-                        //     echo "yes";
-                        // }
-                        // else{
-                        //     echo "no";
-                        // }
-                        // echo "<pre>";
-                        // print_r($i);die; 
-                                         
-                        return view('users', $data);
-                    }
+            function users(){
 
-
-
-                   function getusersprofile($id){
-                    $data['getUserProfileData'] = $this->model->getUsersById($id);
-                    //    echo "<pre>";
-                    //    print_r($data);die;
-                       return view('/chat',$data);
-
-                   }   
-
-
-                   function Add_coins($id){
-                       $data = $this->model->update($id);
-                       print_r($data);die;
-
-
-                   }
-       
-
-
+                $data['allusers']= $this->model->getAllusers();  
+                
+                $data['allprofile']=$this->model->getAllusersprofile();
+                                    
+                return view('users', $data);
             }
+
+
+
+
+
+            function getusersprofile($id){
+            $data['getUserProfileData'] = $this->model->getUsersById($id);                   
+            return view('/chat',$data);
+            }   
+
+
+
+
+
+            function Update_coins($id){
+            $data = $this->model->addCoins($id);                     
+
+            }      
+
+
+    }
 
                
                 
