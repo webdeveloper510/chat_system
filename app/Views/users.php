@@ -15,16 +15,25 @@
        .float-right {
     float: right;
 }
+.users {
+    background: #dddddd;
+    box-shadow: 2px 3px 12px 0px #b3a8a8;
+    border-radius: 2px;
+}
       </style>
-  <body>
-
+  <body style="background: #e7e4e4;">
 
 
 
     <div class="container mt-5 ">
+        <div class="row">
         <div class="col">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <div class="users p-3">
+                <div class="text-center my-3">
+                   <h1>All Users</h1>
+                  </div>
         <?php
         $i=0; 
 
@@ -51,7 +60,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -80,7 +89,7 @@
 
                 <div class="form-group mb-3">
                     <label class="form-label">Type</label>
-                    <input class="form-control" id="type" placeholder="type" name="type"  type="text" >
+                    <input class="form-control"  placeholder="type" name="type"  type="text" >
                   
                 </div>
                 
@@ -91,8 +100,8 @@
                 <label class="form-label">Gender</label>
                  
                   <br>
-                    <input class="form-check-input" id="male" type="radio" name="gender" value="male" >Male
-                    <input class="form-check-input"  id="female" type="radio"name="gender" value="female" >Female
+                    <input class="form-check-input"  type="radio" name="gender" value="male" >Male
+                    <input class="form-check-input"   type="radio"name="gender" value="female" >Female
 
                   </div>
 
@@ -100,27 +109,27 @@
                   <div class="form-group mb-3">
                   <label class="form-label">Age</label>
                   
-                    <input class="form-control" id="age" placeholder="age" name="age" type="number">
+                    <input class="form-control" placeholder="age" name="age" type="number">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Country</label>
                   
-                    <input class="form-control" id="country" placeholder="country" name="country" type="text">
+                    <input class="form-control"  placeholder="country" name="country" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Postarea</label>
-                    <input class="form-control" id="postarea" placeholder="postarea" name="postarea" type="text">
+                    <input class="form-control"  placeholder="postarea" name="postarea" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">City</label>
                  
-                    <input class="form-control" id="city" placeholder="city" name="city" type="text">
+                    <input class="form-control"  placeholder="city" name="city" type="text">
                  
                 </div>
 
@@ -128,55 +137,55 @@
                 <label class="form-label">Coins</label>
                  
                  
-                    <input class="form-control" id="coins" placeholder="coins" name="coins" type="number">
+                    <input class="form-control"  placeholder="coins" name="coins" type="number">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Status</label>
                  
-                    <input class="form-control"  id="status" placeholder="status" name="status" type="text">
+                    <input class="form-control"  placeholder="status" name="status" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Profiletext</label>
                   
-                    <input class="form-control" id="profiletext" placeholder="profiletext" name="profiletext" type="text">
+                    <input class="form-control" placeholder="profiletext" name="profiletext" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Name</label>
                  
-                    <input class="form-control"  id="Name" placeholder="name" name="name" type="text">
+                    <input class="form-control"  placeholder="name" name="name" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Residence</label>
                  
-                    <input class="form-control" id="residence" placeholder="residence" name="residence" type="text">
+                    <input class="form-control"  placeholder="residence" name="residence" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Profession</label>
                   
-                    <input class="form-control" id="profession" placeholder="profession" name="profession" type="text">
+                    <input class="form-control" placeholder="profession" name="profession" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Family</label>
                   
-                    <input class="form-control" id="family" placeholder="family" name="family" type="text">
+                    <input class="form-control" placeholder="family" name="family" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Hobbies</label>
-                    <input class="form-control" id="hobbies" placeholder="hobbies" name="hobbies" type="text">
+                    <input class="form-control"  placeholder="hobbies" name="hobbies" type="text">
                  
                 </div>
 
@@ -199,11 +208,12 @@
                     </div>
                     </div>
                 </div>
+</div>
                 </div>
         <div class="col">
         </div>
     </div>
-
+</div>
 
 
 

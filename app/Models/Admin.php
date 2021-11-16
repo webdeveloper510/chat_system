@@ -90,9 +90,11 @@ public function __construct()
     }
 
     function insert_coin($coin){
-        $coin_res = $this->db->table($table)->insert($coin)->where('coin',$coin);
+        $coin_res = $this->db->table($table)->insert($coin)->where('coins',$coin);
         return $coin_res;
     }
+
+    
 
     function fetch_role_id(){
         $builder = $db->table('role');
@@ -150,18 +152,12 @@ public function __construct()
 
     }
 
-
-
-    
-} 
-
-
     
 
+    }
+
+        
 
 
 
-
-
-
- 
+          

@@ -56,7 +56,7 @@ $('.user_login').submit(function (event) {
         $('#userid').val(users.id);
         $('#name').val(users.name);
         $('#email').val(users.email);        
-        console.log(users); 
+        //console.log(users); 
         }
 
                

@@ -84,7 +84,7 @@ class Admin extends BaseController
     
             if ($res=='1' || $res==1){
                 $this->session->set('msg','User Created Successfully');
-                $page['view_data'] =$this->session->get('msg'); // Normal way
+                $page['view_data'] =$this->session->get('msg'); 
                 $page['session'] =$this->session;  
                 header('Content-Type: application/json');
                 echo json_encode($res);
@@ -129,7 +129,7 @@ class Admin extends BaseController
 
 
      function create_user_profile()
-    {      
+    {              
                 $detail = [    
                     'user_id'    =>$_POST['id'],  
                     'username'   =>$_POST['username'],  
@@ -165,22 +165,7 @@ class Admin extends BaseController
               
                 
             }
-
-
-
-
-                    function Add_Manually_Coin(){
                     
-                         $coin = $this->input->post('coin');
-                         $res = $this->model ->insert_coin($data);
-                         if ($res){
-                            $session->setFlashdata('msg', 'Coin Inserted successfully');
-                            return view('');
-                        }else{
-                            $session->setFlashdata('error', 'something went wrong');
-                        }
-                        
-                    }
     
                     function users(){
     
@@ -197,10 +182,19 @@ class Admin extends BaseController
                     //    print_r($data);die;
                        return view('/chat',$data);
 
-                   }         
+                   }   
 
 
-                }
+                   function Add_coins($id){
+                       $data = $this->model->update($id);
+                       print_r($data);die;
+
+
+                   }
+       
+
+
+            }
 
                
                 
