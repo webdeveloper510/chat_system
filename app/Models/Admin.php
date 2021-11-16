@@ -12,6 +12,7 @@ class Admin extends Model
     protected $db;
     protected $session;
     public $model;
+    public $builder;
     
     
 
@@ -133,12 +134,27 @@ public function __construct()
      }
 
 
+    function getAllusersprofile(){
+        $builder = $this->db->table('profile');
+        $query   = $builder->get()->getResult(); 
+        //print_r($query);die;
+        return $query;
+
+    }
+
+
      function getAllprofile(){
         $builder = $this->db->table('profile');
         $query = $builder->get()->getResult();
         //print_r($query);die;
         return $query;
 
+
+     }
+
+     function updateUserData($detail){
+        $query = $this->db->table('profile')->where('user_id',$detail['user_id'])->update($detail);
+        return $query;
 
      }
 
@@ -151,7 +167,6 @@ public function __construct()
         return $results;
 
     }
-
     
 
     }

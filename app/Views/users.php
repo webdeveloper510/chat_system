@@ -20,6 +20,16 @@
     box-shadow: 2px 3px 12px 0px #b3a8a8;
     border-radius: 2px;
 }
+.profile-type {
+    display: block;
+    margin: 0px auto;
+    margin-top: -36px;
+    text-transform: capitalize;
+    z-index: 2;
+}
+button {
+    text-transform: capitalize;
+}
       </style>
   <body style="background: #e7e4e4;">
 
@@ -38,12 +48,17 @@
         $i=0; 
 
         foreach($allusers as $key=>$users)
+
         {
+            $i = array_search($users->id, array_column($allprofile, 'user_id'));
+            
+
             ?>
                 <div class="list-group">
                 <div class="list-group">                
-                        
- <button id="All_Users" type="button" class="list-group-item list-group-item-action userprofile" onclick="getSingleUser(<?php echo htmlspecialchars(json_encode($users)) ?>);"><?php echo $users->name ?><span class="float-right"><a href="<?=base_url('/chat/'.$users->id)?>">Check your profile</a></span></button>
+               
+ <button id="All_Users" type="button" class="list-group-item list-group-item-action userprofile" onclick="getSingleUser(<?php echo htmlspecialchars(json_encode($users)) ?>,<?php echo $i!==false ?htmlspecialchars(json_encode($allprofile[$i])):''?>);"><?php echo $users->name ?><span class="float-right"><a href="<?=base_url('/chat/'.$users->id)?>">Check your profile</a></span></button>
+ <div class ="profile-type"><p><?php echo $allprofile[$i]->type ?></p></div>
  <div>
  
         </div>
@@ -88,9 +103,14 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="form-label">Type</label>
-                    <input class="form-control"  placeholder="type" name="type"  type="text" >
-                  
+                <label class="form-label">Type</label>
+                 
+                    <select class="form-select form-control" id="selectbox" name="role" aria-label="Default select example" required>
+                    <option selected >Choose Type</option>
+                      <option value="1">Operator</option>
+                      <option value="2">Customer</option>
+                    </select>
+                   
                 </div>
                 
 
@@ -109,27 +129,27 @@
                   <div class="form-group mb-3">
                   <label class="form-label">Age</label>
                   
-                    <input class="form-control" placeholder="age" name="age" type="number">
+                    <input class="form-control" id="age" placeholder="age" name="age" type="number">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Country</label>
                   
-                    <input class="form-control"  placeholder="country" name="country" type="text">
+                    <input class="form-control"  id="country" placeholder="country" name="country" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Postarea</label>
-                    <input class="form-control"  placeholder="postarea" name="postarea" type="text">
+                    <input class="form-control"  id="postarea" placeholder="postarea" name="postarea" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">City</label>
                  
-                    <input class="form-control"  placeholder="city" name="city" type="text">
+                    <input class="form-control"  id="city" placeholder="city" name="city" type="text">
                  
                 </div>
 
@@ -137,70 +157,59 @@
                 <label class="form-label">Coins</label>
                  
                  
-                    <input class="form-control"  placeholder="coins" name="coins" type="number">
+                    <input class="form-control"  id="coins" placeholder="coins" name="coins" type="number">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Status</label>
                  
-                    <input class="form-control"  placeholder="status" name="status" type="text">
+                    <input class="form-control"  id="status" placeholder="status" name="status" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Profiletext</label>
                   
-                    <input class="form-control" placeholder="profiletext" name="profiletext" type="text">
+                    <input class="form-control" id="profiletext" placeholder="profiletext" name="profiletext" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Name</label>
                  
-                    <input class="form-control"  placeholder="name" name="name" type="text">
+                    <input class="form-control" id="username" placeholder="name" name="name" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Residence</label>
                  
-                    <input class="form-control"  placeholder="residence" name="residence" type="text">
+                    <input class="form-control"   id="residence" placeholder="residence" name="residence" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Profession</label>
                   
-                    <input class="form-control" placeholder="profession" name="profession" type="text">
+                    <input class="form-control" id="profession" placeholder="profession" name="profession" type="text">
                   
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Family</label>
                   
-                    <input class="form-control" placeholder="family" name="family" type="text">
+                    <input class="form-control" id="family" placeholder="family" name="family" type="text">
                  
                 </div>
 
                 <div class="form-group mb-3">
                 <label class="form-label">Hobbies</label>
-                    <input class="form-control"  placeholder="hobbies" name="hobbies" type="text">
+                    <input class="form-control"  id="hobbies" placeholder="hobbies" name="hobbies" type="text">
                  
                 </div>
 
-
-                <div class="form-group mb-3">
-                <label class="form-label">Roles</label>
-                 
-                    <select class="form-select form-control" id="select" name="role" aria-label="Default select example" required>
-                    <option selected >Choose Role</option>
-                      <option value="1">Admin</option>
-                      <option value="2">Operator</option>
-                      <option value="3">Customer</option>
-                    </select>
-                   
-                </div>
+                
                 <div class="text-center">
                   <button type="submit" id="reg_btn" class="btn btn-primary mt-4 ">Create account</button>
                 </div>

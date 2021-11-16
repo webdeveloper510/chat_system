@@ -152,7 +152,9 @@ class Admin extends BaseController
                 $data =$this->model->getDataById('user_id', $_POST['id'],'profile');
 
                 if($data){
-                    echo 'exist'; 
+                    $userdata = $this->model->updateUserData($detail);
+                    echo  $userdata==1 ? 'update': '';
+
                 }
                 else{
                     $res = $this->model->insert_data($detail);
@@ -169,7 +171,19 @@ class Admin extends BaseController
     
                     function users(){
     
-                        $data['allusers']= $this->model->getAllusers();        
+                        $data['allusers']= $this->model->getAllusers();  
+                        
+                        $data['allprofile']=$this->model->getAllusersprofile();
+
+                        // $i = array_search(8, array_column($data['allprofile'], 'user_id'));
+                        // if($i!==false){
+                        //     echo "yes";
+                        // }
+                        // else{
+                        //     echo "no";
+                        // }
+                        // echo "<pre>";
+                        // print_r($i);die; 
                                          
                         return view('users', $data);
                     }
