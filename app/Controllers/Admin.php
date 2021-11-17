@@ -76,16 +76,18 @@ class Admin extends BaseController
                 'name' => $_POST['name'],                    
                 'email'  => $_POST['email'],
                 'password'=>md5($_POST['password']),
-                'role'=>$_POST['role'],
-            );
+                'role'=>$_POST['role'],                
+            );           
 
-                $existusers = $this->model->getDataById('email', $_POST['email'],' users');
+                $existusers = $this->model->getDataById('email', $_POST['email'],'users');
                 if($existusers){
                    echo "data";
                    die;
+                   
                 }
 
-            $res = $this->model ->insert_create_user($data);    
+            $res = $this->model ->insert_create_user($data);
+         
             if ($res=='1' || $res==1){
                 $this->session->set('msg','User Created Successfully');
                 $page['view_data'] =$this->session->get('msg'); 

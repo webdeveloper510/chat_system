@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link "  href="<?=base_url('/chat')?>">Chat Queue</a>
+                <a class="nav-link "  href="<?=base_url('/dashboard')?>">Chat Queue</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">My Profile</a>
@@ -42,7 +42,7 @@
               <div class="col-md-10">
                   <div class="body-content p-4">
                       <div class="text-center my-4">
-                       <a href ="http://localhost:8080/chat_system/dashboard"> <button type="button"class="btn btn-danger"> Launch Chat</button></a>
+                       <a href ="<?php echo base_url('/chat')?>"><button type="button"class="btn btn-danger">Launch Chat</button></a>
                       </div>
                       <div class="row">
                           <div class="col-md-8">

@@ -10,7 +10,6 @@ $(".register_user").submit(function (event) {
         data: $(this).serialize(),
         success: function (responseData,) {
             //console.log(responseData); return false;
-
             if(responseData == 'data'){
                 $('#msg').show();
                 $('#msg').html('User already exist');
@@ -83,7 +82,7 @@ $('.user_login').submit(function (event) {
 
         $("#selectbox option[value='profile.role']").prop('selected', true); 
 
-       // console.log(profile); 
+        console.log(profile); 
         
         }
 

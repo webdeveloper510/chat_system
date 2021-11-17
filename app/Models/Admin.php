@@ -30,7 +30,7 @@ public function __construct()
     protected $allowedFields        = [];
 
     // Dates
-    protected $useTimestamps        = false;
+    protected $useTimestamps        = true;
     protected $dateFormat           = 'datetime';
     protected $createdField         = 'created_at';
     protected $updatedField         = 'updated_at';
@@ -96,9 +96,11 @@ public function __construct()
     }    
 
     function insert_create_user($data){
-        $data['created_at']=date('d-m-Y');
-        $data['updated_at']=date('d-m-Y');          
+        $data['created_at']=date('d-m-y');
+        $data['updated_at']=date('d-m-y'); 
+        //print_r($data);die;         
         $record = $this->db->table('users')->insert($data);
+
         return $record;
     }
 
