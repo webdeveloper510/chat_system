@@ -95,8 +95,8 @@ public function __construct()
     }    
 
     function insert_create_user($data){
-        $data['created_at']=date('m/d/y');
-        $data['updated_at']=date('m/d/y');           
+        $data['created_at']=date('d-m-Y');
+        $data['updated_at']=date('d-m-Y');          
         $record = $this->db->table('users')->insert($data);
         return $record;
     }
@@ -138,10 +138,18 @@ public function __construct()
 
 
 
+
+
      function updateUserData($detail){
+
+        $exist  = $this->getDataById('user_id',$detail['user_id'],'profile');        
+        $detail['coins']=$exist[0]->coins+$detail['coins'];
         $query = $this->db->table('profile')->where('user_id',$detail['user_id'])->update($detail);
         return $query;
      }
+
+
+
 
 
 

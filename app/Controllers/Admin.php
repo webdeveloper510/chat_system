@@ -52,10 +52,12 @@ class Admin extends BaseController
     }
 
 
+
     function operator(){
     
         return view('operator');
     }
+
 
 
 
@@ -68,6 +70,7 @@ class Admin extends BaseController
 
      function create_user(){
         $session = session();
+        
         if($_POST['password']==$_POST['confirm_password']){
             $data = array(
                 'name' => $_POST['name'],                    
@@ -145,12 +148,14 @@ class Admin extends BaseController
 
                 if($data){
                     $userdata = $this->model->updateUserData($detail);
-                    echo  $userdata==1 ? 'update': '';
+
+                    echo  $userdata==1 ? 'update': '';                  
 
                 }
                 else{
                     $res = $this->model->insert_data($detail);
                     if ($res==1 || $res=='1'){
+
                         echo 1;
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
@@ -164,10 +169,10 @@ class Admin extends BaseController
             function users(){
 
                 $data['allusers']= $this->model->getAllusers();  
-                
+
                 $data['allprofile']=$this->model->getAllusersprofile();
                                     
-                return view('users', $data);
+                return view('/users', $data);
             }
 
 
@@ -179,14 +184,7 @@ class Admin extends BaseController
             return view('/chat',$data);
             }   
 
-
-
-
-
-            function Update_coins($id){
-            $data = $this->model->addCoins($id);                     
-
-            }      
+   
 
 
     }

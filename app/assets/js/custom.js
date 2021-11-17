@@ -89,7 +89,7 @@ $('.user_login').submit(function (event) {
                 url: BASE_URL+'/Admin/create_user_profile',
                 data: $(this).serialize(),
                 success: function (responseData) {
-                    console.log(responseData);     
+                    console.log(responseData);    
                     if (responseData==1) {
                     $('#alertmsg').show();
                     $('#alertmsg').html('Profile created successfully');
