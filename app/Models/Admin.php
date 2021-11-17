@@ -55,7 +55,7 @@ public function __construct()
 
 
     function insert_users_data($data){
-        $builder = $db->table('users');
+        $builder = $this->db->table('users');
         $insert_data = $this->db->table($builder)->insert($data);
         return $insert_data;        
     }
@@ -63,8 +63,6 @@ public function __construct()
 
 
     public function insert_data($data){
-        $data['created_at']=date('m/d/y');
-        $data['updated_at']=date('m/d/y');
         $record = $this->db->table($this->table)->insert($data);
         return $record;
     }
@@ -96,8 +94,8 @@ public function __construct()
     }    
 
     function insert_create_user($data){
-        $data['created_at']=date('d-m-y');
-        $data['updated_at']=date('d-m-y'); 
+        $data['created_at']=date('d-m-y H:i:s');
+        $data['updated_at']=date('d-m-y H:i:s'); 
         //print_r($data);die;         
         $record = $this->db->table('users')->insert($data);
 

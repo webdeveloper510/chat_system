@@ -151,21 +151,27 @@ class Admin extends BaseController
                     'profession' =>$_POST['profession'],
                     'family'     =>$_POST['family'],
                     'hobbies'    =>$_POST['hobbies'],
+                    'created_at' =>date('d-m-y H:i:s'),
+                    'updated_at' =>date('d-m-y H:i:s') 
+
                  
                 ];
-                $data =$this->model->getDataById('user_id', $_POST['id'],'profile');
-                $detail['coins']=$data[0]->coins+$detail['coins'];
-                if($data){
-                    $userdata = $this->model->updateUserData($detail);
 
+                
+                $data =$this->model->getDataById('user_id', $_POST['id'],'profile');
+            
+                if($data){
+                    $detail['coins']=$data[0]->coins+$detail['coins'];
+                    $userdata = $this->model->updateUserData($detail);                 
                     echo  $userdata==1 ? 'update': '';                  
 
                 }
-                else{
+             
+                else{                
                     $res = $this->model->insert_data($detail);
                     if ($res==1 || $res=='1'){
-
                         echo 1;
+
                     }else{
                         $session->setFlashdata('error', 'something went wrong');
                     }   
