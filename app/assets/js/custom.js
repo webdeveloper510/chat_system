@@ -9,12 +9,20 @@ $(".register_user").submit(function (event) {
         url: BASE_URL+'/Admin/create_user',
         data: $(this).serialize(),
         success: function (responseData,) {
+            //console.log(responseData); return false;
+
+            if(responseData == 'data'){
+                $('#msg').show();
+                $('#msg').html('User already exist');
+            }                                
+
+           else if (responseData == 1) {
             $('#msg').show();
-            $('#msg').html('User Registered successfully');
-            if (responseData == 1) {
+            $('#msg').html('User Registered successfully'); 
             setTimeout(function(){
                     window.location.href = BASE_URL+'/Login';
             }, 3000);
+
                
             } else {
                 alert('something went wrong');

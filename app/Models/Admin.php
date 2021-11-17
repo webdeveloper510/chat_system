@@ -72,6 +72,7 @@ public function __construct()
 
 
     function getDataById($key,$id, $table){
+        
         $query = $this->db->table($table)->where($key,$id)->get();
         $results = $query->getResult();
         return $results;
@@ -140,10 +141,7 @@ public function __construct()
 
 
 
-     function updateUserData($detail){
-
-        $exist  = $this->getDataById('user_id',$detail['user_id'],'profile');        
-        $detail['coins']=$exist[0]->coins+$detail['coins'];
+     function updateUserData($detail){     
         $query = $this->db->table('profile')->where('user_id',$detail['user_id'])->update($detail);
         return $query;
      }

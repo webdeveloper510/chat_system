@@ -78,6 +78,13 @@ class Admin extends BaseController
                 'password'=>md5($_POST['password']),
                 'role'=>$_POST['role'],
             );
+
+                $existusers = $this->model->getDataById('email', $_POST['email'],' users');
+                if($existusers){
+                   echo "data";
+                   die;
+                }
+
             $res = $this->model ->insert_create_user($data);    
             if ($res=='1' || $res==1){
                 $this->session->set('msg','User Created Successfully');
@@ -145,7 +152,7 @@ class Admin extends BaseController
                  
                 ];
                 $data =$this->model->getDataById('user_id', $_POST['id'],'profile');
-
+                $detail['coins']=$data[0]->coins+$detail['coins'];
                 if($data){
                     $userdata = $this->model->updateUserData($detail);
 

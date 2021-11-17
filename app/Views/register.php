@@ -133,7 +133,8 @@
                 <small> Sign up </small>
               </div>
 
-              <form class="register_user" id= "validate_form" method="post"  role="form" autocomplete="off">
+
+      <form class="register_user" id= "" method="post"  role="form" autocomplete="off">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
