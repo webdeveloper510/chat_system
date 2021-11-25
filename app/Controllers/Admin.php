@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+require 'vendor/autoload.php';
 
 use App\Controllers\BaseController;
 
@@ -197,7 +198,12 @@ class Admin extends BaseController
             function getusersprofile($id){
             $data['getUserProfileData'] = $this->model->getUsersById($id);                   
             return view('/chat',$data);
-            }   
+            }  
+            
+            
+            function chat_page(){
+                return view('chat_page');
+            }
 
    
 

@@ -12,7 +12,8 @@
         "ext-mbstring": "*",
         "kint-php/kint": "^3.3",
         "laminas/laminas-escaper": "^2.8",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "cboden/ratchet": "^0.4.3"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.1",
@@ -44,5 +45,12 @@
         "forum": "http://forum.codeigniter.com/",
         "source": "https://github.com/codeigniter4/CodeIgniter4",
         "slack": "https://codeigniterchat.slack.com"
+    },
+    "config": {
+        "github-oauth": {
+            "github.com": "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"
+        }
     }
+
+    
 }
